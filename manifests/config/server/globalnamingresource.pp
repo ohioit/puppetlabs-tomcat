@@ -8,8 +8,8 @@
 #   Resource element. Valid values are 'true', 'false', 'present', and
 #   'absent'. Defaults to 'present'.
 # - An optional $resource_name that replaces the $name from the resource.
-# - An optional string containing the $type of the element. Used verbatim
-#   to create a <GlobalNamingResources><${type} /></GlobalNamingResources>
+# - An optional string containing the $resource_type of the element. Used verbatim
+#   to create a <GlobalNamingResources><${resource_type} /></GlobalNamingResources>
 #   node. Should be used for "Environment" entries, for example.
 # - An optional hash of $additional_attributes to add to the Resource. Should
 #   be of the format 'attribute' => 'value'.
@@ -17,7 +17,7 @@
 define tomcat::config::server::globalnamingresource (
   $catalina_base         = $::tomcat::catalina_home,
   $resource_name         = undef,
-  $type                  = 'Resource',
+  $resource_type         = 'Resource',
   $ensure                = 'present',
   $additional_attributes = {},
   $attributes_to_remove  = [],
@@ -37,7 +37,7 @@ define tomcat::config::server::globalnamingresource (
     $_resource_name = $name
   }
 
-  $base_path = "Server/GlobalNamingResources/${type}[#attribute/name='${_resource_name}']"
+  $base_path = "Server/GlobalNamingResources/${resource_type}[#attribute/name='${_resource_name}']"
 
   if $server_config {
     $_server_config = $server_config

@@ -464,7 +464,7 @@ Optionally override the globalnamingresource name that is normally taken from th
 
 Specifies the base directory of the Tomcat instance. Valid options: a string containing an absolute path. Default: `$::tomcat::catalina_home`
 
-##### `type`
+##### `resource_type`
 
 Specifies the type of element to create. Defaults to `Resource` but can also be set to `Environment`, among any other valid node.
 _Note: This is used verbatim in your configuration so make sure the case is correct._
